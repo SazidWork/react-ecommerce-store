@@ -10,6 +10,12 @@ function App() {
     setCart([...cart, product]);
   };
 
+  const removeFromCart = (index) => {
+    const newCart = [...cart];
+    newCart.splice(index, 1);
+    setCart(newCart);
+  };
+
   return (
     <div>
 
@@ -17,7 +23,7 @@ function App() {
 
       <Products addToCart={addToCart} />
 
-      <Cart cart={cart} />
+      <Cart cart={cart} removeFromCart={removeFromCart} />
 
     </div>
   );
