@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import Products from "./components/Products";
+import Cart from "./components/Cart";
 
 function App() {
+
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
   return (
     <div>
+
       <h1>My React Ecommerce Store</h1>
-      <p>Welcome to my online store</p>
+
+      <Products addToCart={addToCart} />
+
+      <Cart cart={cart} />
+
     </div>
   );
 }
