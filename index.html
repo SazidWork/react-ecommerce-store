@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Ecommerce Store</title>
+</head>
+
+<body>
+
+<h1>My Ecommerce Store</h1>
+
+<h2>Products</h2>
+
+<div>
+  <p>Laptop - ₹50000</p>
+  <button onclick="addToCart('Laptop', 50000)">Add to Cart</button>
+</div>
+
+<div>
+  <p>Mobile - ₹20000</p>
+  <button onclick="addToCart('Mobile', 20000)">Add to Cart</button>
+</div>
+
+<div>
+  <p>Headphone - ₹2000</p>
+  <button onclick="addToCart('Headphone', 2000)">Add to Cart</button>
+</div>
+
+<h2>Cart</h2>
+<ul id="cart"></ul>
+
+<script>
+let cart = [];
+
+function addToCart(name, price) {
+  cart.push({name, price});
+  displayCart();
+}
+
+function displayCart() {
+  let cartList = document.getElementById("cart");
+  cartList.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    let li = document.createElement("li");
+    li.innerHTML = item.name + " - ₹" + item.price +
+    " <button onclick='removeItem(" + index + ")'>Remove</button>";
+    cartList.appendChild(li);
+  });
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  displayCart();
+}
+</script>
+
+</body>
+</html>
